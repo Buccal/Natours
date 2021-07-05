@@ -49,7 +49,7 @@
 
 ## 示例
 
-
+![Natours截图](https://raw.githubusercontent.com/Buccal/Natours/master/Screenshots/Natours示例截图.gif)
 
 ## 参考
 
