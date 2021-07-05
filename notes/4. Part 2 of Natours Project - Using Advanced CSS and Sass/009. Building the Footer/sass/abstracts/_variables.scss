@@ -1,0 +1,46 @@
+// 颜色
+$color-primary: #55c57aff; //中绿
+$color-primary-light: #7ed56f; //浅绿
+$color-primary-dark: #28b485; //深绿
+
+$color-secondary-light: #ffb900; // 浅橙
+$color-secondary-dark: #ff7730; // 深橙
+
+$color-tertiary-light: #2998ff; // 浅蓝
+$color-tertiary-dark: #5643fa; // 深蓝
+
+
+$color-grey-light-1: #f7f7f7; //浅灰色
+$color-grey-light-2: #eee; //浅灰色
+
+$color-grey-dark-1: #777; //深灰色
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-white: #fff; //白色
+$color-black: #000; //黑色
+
+// 阴影
+$shadow-light-1: rgba($color-black, .1);
+$shadow-light-2: rgba($color-black, .15);
+$shadow-light-3: rgba($color-black, .2);
+$shadow-medium-1: rgba($color-black, .4);
+$shadow-medium-2: rgba($color-black, .5);
+$shadow-dark: rgba($color-black, .8);
+
+// 边距
+$border-radius-small: .3rem;
+$border-radius-huge: 5rem;
+
+
+// 字体
+$default-font-size: 1.6rem;
+
+//宽高
+/*$width-row: 114rem;*/
+$grid-width: 114rem;
+/*$margin-buttom-row: 8rem;*/
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+
+

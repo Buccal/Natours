@@ -1,0 +1,116 @@
+.form {
+	&__group {
+		&:not(:last-child) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__input {
+		// input不会自动继承，而是指定Arial字体
+		font-family: inherit;
+		font-size: 1.5rem;
+		padding: 1.5rem 2rem;
+		border-radius: $border-radius-small;
+		background-color: rgba($color-white, 0.5);
+		border: none;
+		// 第二个输入框会因为前一个聚焦突然出现的下边框而下移
+		border-bottom: .3rem solid transparent;
+		width: 90%;
+
+		@include respond(tab-land) {
+			width: 100%;
+		}
+
+		// 聚焦的蓝色框线（轮廓线）
+		&:focus {
+			outline: none;
+			box-shadow: 0 1rem 2rem $shadow-light-1;
+			border-color: $color-primary;
+
+			&:invalid {
+				border-color: $color-secondary-dark;
+			}
+
+			// 获取焦点且输入文字后才触发
+			/*&+label {
+				opacity: 1;
+			}*/
+		}
+
+		// 会一直变色
+		// &:invalid {}
+
+		&:placeholder-shown+label {
+			// 元素仍然在页面上，只是不可见
+			opacity: 0;
+			// 与上效果相同，但不能动画visibility
+			visibility: hidden;
+			transform: translateY(-4rem);
+		}
+
+		&::-webkit-input-placeholder {
+			color: $color-grey-dark-2;
+		}
+	}
+
+	&__label {
+		opacity: 1;
+		display: block;
+		font-size: 1.2rem;
+		font-size: 700;
+		margin-left: 2rem;
+		margin-top: .7rem;
+		transform: translateY(0);
+		transition: all .3s;
+	}
+
+	&__radio-group {
+		/*float: left;*/
+		display: inline-block;
+		width: 49%;
+
+		@include respond(tab-port) {
+			width: 100%;
+		}
+	}
+
+	&__radio-input {
+		display: none;
+		/*visibility: hidden;*/
+
+	/*&__radio-input:checked ~ &__radio-label &__radio-button::after {}*/
+		&:checked+label>span::after {
+			opacity: 1;
+		}
+	}
+
+	&__radio-label {
+		font-size: $default-font-size;
+		cursor: pointer;
+		position: relative;
+		padding-left: 5rem;
+	}
+
+	&__radio-button {
+		height: 3rem;
+		width: 3rem;
+		border-radius: 50%;
+		border: .5rem solid $color-primary;
+		display: inline-block;
+		/*transform: translateY(8px);*/
+		position: absolute;
+		left: 0;
+		top: -.4rem;
+
+		&::after {
+			@include absCenter;
+			content: "";
+			width: 1.3rem;
+			height: 1.3rem;
+			border-radius: 50%;
+			background-color: $color-primary;
+			opacity: 0;
+			transition: opacity .2s;
+		}
+	}
+}

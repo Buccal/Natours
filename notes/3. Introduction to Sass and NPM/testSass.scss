@@ -1,0 +1,115 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: inherit;
+}
+
+$color-primary: #55c57a; // 中绿
+$color-primary-darker: #28b485; //深绿
+$color-primary-lighter: #7ed56f; // 浅绿
+$color-secondary: #BFDEEE; //浅蓝
+$color-tertiary: #FFB27F;
+$color-tertiary-darker: #FF9F3F;
+$color-text-white: #fff;
+$color-text-black: #000;
+$color-text-gray: #808080; //灰色
+
+$width-btn: 1rem;
+
+@mixin clearfix() {
+	&::after {
+		content: "";
+		/*display: block;*/
+		display: table;
+		/*display: inline-block;*/
+		/*display: inline;*/
+		clear: both;
+	}
+}
+
+@mixin style-link-text($color) {
+	text-decoration: none;
+	color: $color;
+}
+
+%btn-placehodler {
+	display: inline-block;
+	margin-right: 0.4rem;
+	padding-top: 0.05rem;
+	padding-bottom: 0.05rem;
+	@include style-link-text($color-text-white);
+	text-align: center;
+	font-size: inherit;
+	border-radius: 1rem;
+	width: $width-btn;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 625%;
+}
+
+body {
+	font-size: 0.16rem;
+}
+
+nav {
+	background-color: $color-secondary;
+	padding: 0.1rem 0;
+
+	@include clearfix;
+}
+
+.navigation {
+	float: left;
+	list-style: none;
+	li {
+		display: inline-block;
+		margin-left: 0.5rem;
+
+		a {
+			&:link{
+				color: $color-text-gray;
+			}
+			&:hover {
+				color: $color-text-black;
+			}
+			@include style-link-text($color-tertiary);
+			text-transform: uppercase;
+
+		}
+
+		&:first-child {
+			a:link {
+				color: $color-text-black;
+			}
+		}
+	}
+}
+
+.button {
+	float: right;
+
+	.btn-main {
+		&:link {
+			@extend %btn-placehodler;
+			/*background-color: $color-primary-lighter;*/
+			background-color: lighten($color-primary-lighter, 10%);
+		}
+
+		&:hover {
+			background-color: $color-primary;
+		}
+	}
+
+	.btn-hot {
+		&:link {
+			@extend %btn-placehodler;
+			background-color: $color-tertiary;
+		}
+		&:hover {
+			/*background-color: $color-tertiary-darker;*/
+			background-color: darken($color-tertiary-darker, 5%);
+		}
+	}
+}

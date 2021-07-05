@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html{
+	// 定义1rem；1200 - 1800
+	font-size: 62.5%; // 10px = 1rem
+
+	// > 1800
+	@include respond(big-desktop) {
+		font-size: 75%; // 12px
+	}
+
+	// < 1200
+	@include respond(tab-land) {
+		font-size: 56.25%; // 9px
+	}
+
+	// < 900
+	@include respond(tab-port) {
+		font-size: 50%; // 8px
+	}
+}
+
+body{
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0;
+	}
+}
+

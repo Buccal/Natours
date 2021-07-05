@@ -1,0 +1,73 @@
+.section-about{
+	background-color: $color-grey-light-1;
+	padding: 25rem 0;
+	// clip产生的三角形95vh-75vh=20vh
+	margin-top: -20vh;
+}
+
+.section-features {
+	padding: 20rem 0;
+	background-image: linear-gradient(
+		to right bottom,
+		rgba($color-primary-light, .8),
+		rgba($color-primary-dark, .8)),
+	url(../img/nat-4.jpg);
+	background-size: cover;
+	// 连着里面的元素一起裁剪了
+	/*clip-path: polygon(0 75vh, 100% 0, 100% 75vh, 0 100%);*/
+	transform: skewY(-7deg);
+	margin-top: -10rem;
+
+	/*.row*/
+	// 如果用&*，一些本不继承tranform的元素也会被倾斜
+	&>* {
+		// 为啥放在.feature-box里hover时失效？
+		// 里面正了，外面还是斜的，对hover有什么直接影响吗？
+		transform: skewY(7deg);
+	}
+}
+
+.section-tours {
+	background-color: $color-grey-light-1;
+	padding: 25rem 0 15rem 0;
+	margin-top: -10rem;
+}
+
+.section-stories {
+	/*background-color: rgba(255, 255, 255, 0.85);*/
+	padding: 15rem 0;
+	font-size: $default-font-size;
+	position: relative;
+}
+
+.section-book {
+	padding: 15rem 0;
+	background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+
+
+	.book__form {
+		/*background-color: linear-gradient(to bottom)*/
+	}
+}
+
+.book {
+	background-image: linear-gradient(
+		// to right bottom,
+		// 指定一个角度，如90deg指x方向，即to right
+		105deg,
+		rgba($color-white, .9) 0%,
+		rgba($color-white, .9) 65%,
+		transparent 50%),
+		url("../img/nat-10.jpg");
+	background-size: cover;
+	// 两者含义相同，将图片拉伸到占满整个容器，但设置高度后，图片填不满，100%就会在下方重复图片
+	/*background-size: 100%;*/
+	border-radius: $border-radius-small;
+	box-shadow: 0 1.5rem 4rem $shadow-light-3;
+
+	&__form {
+		width: 65%;
+		padding: 6rem;
+	}
+}

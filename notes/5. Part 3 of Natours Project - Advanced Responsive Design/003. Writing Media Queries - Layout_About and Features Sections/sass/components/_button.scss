@@ -1,0 +1,100 @@
+.btn{
+	&,
+	&:link,
+	&:visited{
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 1.5rem 4rem;
+		display: inline-block;
+		border-radius: $border-radius-huge;
+		transition: all .2s;
+		position: relative;
+		font-size: $default-font-size;
+		// button元素
+		border: none;
+		// 不要在这里设置这个，因为会影响它的访问性，障碍啥啥的
+		/*outline: none;*/
+	}
+
+	&:hover{
+		transform: translateY(-3px);
+		box-shadow: 0 10px 20px $shadow-light-3;
+
+		&::after{
+			transform: scaleX(1.4) scaleY(1.6);
+			opacity: 0;
+		}
+	}
+
+	&:active,
+	&:focus{
+		// button元素
+		outline: none;
+		transform: translateY(-1px);
+		box-shadow: 0 5px 10px $shadow-light-3;
+	}
+
+	&::after{
+		content: "";
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		border-radius: $border-radius-huge;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		transition: all .4s;
+	}
+
+	&--white{
+		background-color: $color-white;
+		color: $color-grey-dark-1;
+
+		&::after{
+			background-color: $color-white;
+		}
+	}
+
+	&--green{
+		background-color: $color-primary;
+		color: $color-white;
+
+		&::after{
+			background-color: $color-white;
+		}
+	}
+
+	&--animated{
+		animation: moveInBottom .5s ease-out .75s;
+		animation-fill-mode: backwards;
+	}
+}
+
+
+.btn-text {
+	&:link,
+	&:visited {
+		display: inline-block;
+		text-decoration: none;
+		color: $color-primary;
+		border-bottom: 1px solid $color-primary;
+		padding: 3px;
+		font-size: $default-font-size;
+		transition: all .2s;
+	}
+
+	&:hover {
+		transition: all .2s;
+		color: $color-white;
+		background-color: $color-primary;
+		transform: translateY(-.2rem);
+		box-shadow: 0 1rem 2rem $shadow-light-2;
+	}
+
+	&:active {
+		transition: all .2s;
+		transform: translateY(.2rem);
+		box-shadow: 0 .5rem 1rem $shadow-light-3;
+	}
+}

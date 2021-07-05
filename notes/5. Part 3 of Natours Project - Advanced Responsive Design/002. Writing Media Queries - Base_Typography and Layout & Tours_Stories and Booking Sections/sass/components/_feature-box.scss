@@ -1,0 +1,30 @@
+.feature-box {
+	/*transform: skewY(7deg);*/
+	background-color: rgba($color-white, .8);
+	padding: 2.5rem;
+	text-align: center;
+	border-radius: $border-radius-small;
+	box-shadow: 0 1.5rem 4rem $shadow-light-2;
+	/*transition: all .3s;*/
+	transition: transition .3s;
+
+	&__icon {
+		font-size: 6rem;
+		margin-bottom: .5rem;
+		// 没有这行上面部分会被遮盖
+		display: inline-block;
+		background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+		color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
+	}
+
+	&__text {
+		font-size: 1.5rem;
+	}
+
+	&:hover {
+		transform: scale(1.03) translateY(-1.5rem);
+		box-shadow: 0 1rem 4rem $shadow-light-3;
+	}
+}

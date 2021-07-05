@@ -1,0 +1,44 @@
+.composition {
+	position: relative;
+
+	&__photo {
+		width: 55%;
+		box-shadow: 0 1.5rem 3rem $shadow-medium-1;
+		border-radius: $border-radius-small;
+		position: absolute;
+		z-index: 10;
+		transition: all .2s;
+		outline-offset: 2rem;
+
+		&--p1 {
+			left: 0;
+			top: -2rem;
+		}
+
+		&--p2 {
+			right: 0;
+			top: 2rem;
+		}
+
+		&--p3 {
+			top: 10rem;
+			left: 20%;
+		}
+
+		&:hover {
+			transform: scale(1.05);
+			z-index: 20;
+			box-shadow: 0 2.5rem 4rem $shadow-medium-2;
+			outline: 1.5rem solid $color-primary;
+
+			/*// 选择之后的元素，如何选择之前的元素？
+			&~img {
+				transform: scale(0.95);
+			}*/
+		}
+	}
+
+	&:hover>&__photo:not(:hover) {
+		transform: scale(0.95) translateY(.5rem);
+	}
+}

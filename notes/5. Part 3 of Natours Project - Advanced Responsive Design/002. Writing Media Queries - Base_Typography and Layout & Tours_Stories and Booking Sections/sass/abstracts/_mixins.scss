@@ -1,0 +1,57 @@
+@mixin flexfix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin absCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+
+/*
+(for desktop first)
+0-600px		phone手机
+600-900px	tablet portrait平板电脑
+900-1200px	tablet landscape
+1200-1800px	normal styles apply
+1800-		big desktop
+
+1em = 16px
+
+$breakpoint argument choices:
+- phone: 600px
+- tal-port: 900px
+- tal-land: 1200px
+- big-desktop: 1800px
+*/
+@mixin respond($breakpoint) {
+	@if ($breakpoint == phone) {
+		@media only screen and (max-width: 37.5em) {
+			@content;
+		}
+	}
+	@if ($breakpoint == tal-port) {
+		@media only screen and (max-width: 56.25em) {
+			@content;
+		}
+	}
+	@if ($breakpoint == tal-land) {
+		@media only screen and (max-width: 75em) {
+			@content;
+		}
+	}
+	@if ($breakpoint == big-desktop) {
+		@media only screen and (min-width: 112.5em) {
+			@content;
+		}
+	}
+}
+
+

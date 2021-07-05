@@ -1,0 +1,72 @@
+.story {
+	width: 75%;
+	margin: 0 auto;
+	box-shadow: 0 3rem 4rem $shadow-light-1;
+	background-color: rgba($color-white, .6);
+	border-radius: $border-radius-small;
+	padding: 6rem 6rem 6rem 9rem;
+	transform: skewX(-12deg);
+
+	&__shape {
+		width: 15rem;
+		height: 15rem;
+		border-radius: 50%;
+		background-color: $color-grey-dark-1;
+		// 为哈文本围绕，而名字被盖住了？
+		// 有宽高才能浮动
+		float: left;
+		// circle(半径 at 圆心坐标)
+		shape-outside: circle(50% at 50% 50%);
+		clip-path: circle(50% at 50% 50%);
+		-webkit-clip-path: circle(50% at 50% 50%);
+	/*	clip-path: circle(50% at 75% 50%);
+		-webkit-clip-path: circle(50% at 75% 50%);*/
+		transform: translateX(-3rem) skewX(12deg);
+		/*transform: translateX(-6rem) skewX(12deg);*/
+		position: relative;
+		// 图片溢出，右边出现一条线，但没有，为哈？
+		overflow: hidden;
+	}
+
+	&__img {
+		height: 100%;
+		transform: translateX(-4rem) scale(1.4);
+		/*backface-visibility: hidden;*/
+		transition: all .5s;
+
+	}
+
+	&__caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 20%);
+		color: $color-white;
+		font-size: 1.7rem;
+		text-align: center;
+		opacity: 0;
+		transition: all .5s;
+		/*z-index: 1;*/
+		// 修复最后会突然变清晰的问题
+		backface-visibility: hidden;
+	}
+
+	&__text {
+		/*font-size: $default-font-size;*/
+		transform: skewX(12deg);
+	}
+
+	&:hover {
+		.story__img {
+			transform: translateX(-4rem) scale(1);
+			// 模糊度 明暗度
+			// brightness(0.5) blur(1px) contrast(0.5) greyscale(1) drop-shadow(2px 4px 6px black) hue-rotate(45deg) invert(1)
+			filter: blur(.3rem) brightness(80%);
+		}
+
+		.story__caption {
+			transform: translate(-50%, -50%);
+			opacity: 1;
+		}
+	}
+}

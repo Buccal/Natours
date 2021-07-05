@@ -1,0 +1,41 @@
+// 颜色
+$color-primary: #55c57aff;
+$color-primary-dark: #28b485;
+$color-primary-light: #7ed56f;
+
+$color-secondary-dark: #ff7730;
+$color-secondary-light: #ffb900;
+
+$color-tertiary-dark: #5643fa;
+$color-tertiary-light: #2998ff;
+
+$color-white: #FFF;
+$color-black: #000;
+
+$color-gray: #808080;
+$color-gray-dark-1: #999;
+$color-gray-dark-2: #777;
+$color-gray-dark-3: #333;
+$color-gray-light-1: #eee;
+$color-gray-light-2: #F7F7F7;
+
+
+// 字体大小
+$default-font-size: 1.6rem;
+
+
+// 阴影大小
+$shadow-light-1: rgba($color-black, .1);
+$shadow-light-2: rgba($color-black, .15);
+$shadow-light-3: rgba($color-black, .2);
+$shadow-light-4: rgba($color-black, .3);
+$shadow-medium-1: rgba($color-black, .4);
+$shadow-medium-2: rgba($color-black, .5);
+$shadow-dark-1: rgba($color-black, .8);
+
+// 网格布局
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+
+

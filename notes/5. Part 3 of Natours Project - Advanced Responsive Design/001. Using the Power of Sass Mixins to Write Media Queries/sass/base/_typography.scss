@@ -1,0 +1,100 @@
+body{
+	font-family: "Lato", "Futura Std Light", "Californian FB", "Broadway", "Bauhaus 93",sans-serif;
+	font-weight: 400;
+	color: grey;
+	line-height: 1.7;
+	color: $color-grey-dark-1;
+	padding: 3rem;
+}
+
+.heading-primary{
+	color: $color-white;
+	text-transform: uppercase;
+	backface-visibility: hidden;
+	margin-bottom: 6rem;
+
+	&--main{
+		display: block;
+		font-size: 6rem;
+		font-weight: 400;
+		letter-spacing: 3.5rem;
+		animation-name: moveInLeft;
+		animation-duration: 1s;
+		animation-timing-function: ease-out;
+	}
+
+	&--sub{
+		display: block;
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: 1.74rem;
+		animation: moveInRight 1s ease-out;
+	}
+}
+
+.heading-secondary {
+	font-size: 3.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: $color-primary-dark;
+	background-image: linear-gradient(
+		to right,
+		rgba($color-primary-dark, .8)
+		rgba($color-primary-light, .8)),
+	url();
+	// 不能用十六进制带透明度的颜色
+	/*background-image: linear-gradient(to right, #7ed56fcc, #28b485cc), url();
+	);*/
+	//块元素会占据10%，而行内元素会根据内容自适应，想要渐变应用到内容上，可以设置：
+	display: inline-block;
+	/*超级新的属性，必须加前缀
+	the background gets clipped exactly where the text is
+	*/
+	background-clip: text;
+	-webkit-background-clip: text;
+	// 把字体设为透明就可以看到背景图片了
+	color: transparent;
+
+	&:hover {
+		transform: translate();
+	}
+}
+
+.header-secondary {
+	font-size: 3.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+	// 渐变只占文字不占整行
+	display: inline-block;
+	background-clip: text;
+	// 属性太新了，必须加前缀
+	-webkit-background-clip: text;
+	color: transparent;
+
+	&:hover {
+		// 直接写2px也行，因为这个数值太小了，四舍五入后也是2个像素
+		letter-spacing: .2rem;
+		transition: all .2s;
+		transform: skewX(15deg) skewY(2deg) scale(1.1);
+		// x, y, blur, color
+		text-shadow: .5rem 1rem 2rem $shadow-light-3;
+
+	}
+}
+
+.header-tertiary {
+	font-size: $default-font-size;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.paragraph {
+	font-size: $default-font-size;
+
+	&:not(first-child) {
+		margin-bottom: 3rem;
+	}
+
+}
+

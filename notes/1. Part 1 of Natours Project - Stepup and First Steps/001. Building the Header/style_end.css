@@ -1,0 +1,143 @@
+/*
+【颜色参考 】
+浅绿：#7ed56fff
+中绿：#55c57aff
+深绿：#28b485ff
+*/
+
+/*
+1-1-1. perform a basic reset: Normalize that CSS in order to make a cross browser reset. So in order to make every browser render the page.(随着浏览器的发展已经不那么必要了)
+- 消除浏览器添加的外边距和内边距
+- 删去边框和内边距会自动添加到元素的总宽高的默认行为
+*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*
+1-1-2. set some overall font properties for the entire webpage
+- 设置字体为Lato，候补字体为sans-serif
+- 设置粗细为400
+- 设置大小为16px
+- 设置颜色为灰色
+- 设置行距为1.7（1.7倍预定义的行距）
+- 设置内边距为30px
+*/
+body{
+	/*Lato可以加上双引号*/
+	font-family: "Lato", "Blackadder ITC",sans-serif;
+	/*去掉px，不需要单位*/
+	font-weight: 400px;
+	font-size: 16px;
+	/*等价于#777*/
+	color: gray;
+	line-height: 1.7;
+	padding: 30px;
+}
+
+/*
+1-1-3. formatting the header element
+- 设置高度为95vh（每个点这个元素的高度应为窗口高度的95%）
+- 设置背景图片为hero.jpg
+- 设置图片大小为cover（在不拉伸图像的情况下尽可能缩放图像。 如果图像的比例与元素不同，则会垂直或水平裁剪图像，以确保没有空白空间。）
+- 设置图片位置在顶部
+- 给图片添加半透明绿色渐变（浅绿→深绿）遮罩linear-gradient()，透明度为0.8，方向为右下角
+- 裁剪图片clip-path，裁剪边高度设为75vh，这样就可以随着视窗大小变化了（课堂测试：等腰三角形）
+ */
+.header{
+	height: 95vh;
+	background-image: linear-gradient(to right bottom, #7ED56FCC, #28b485CC), url(../img/hero.jpg);
+	background-size: cover;
+	background-position: top;
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	position: relative;
+}
+
+/*
+1-2-1. 设置图标位置
+- 设置图标为绝对定位（别忘了绝对定位的要求）
+- 设置上和左都为40px
+ */
+.logo-box{
+	position: absolute;
+	top: 40px;
+	left: 40px;
+}
+
+/*
+1-2-2. 设置图标
+- 设置高度为35px（设置高度后宽度会自适应）
+ */
+.logo{
+	height: 35px;
+}
+
+/*
+1-2-4. 标题和按钮居中
+- 设置绝对定位
+- 使用top、left、transform设置居中（为了看起来更舒服top可以设为40%）
+ */
+.text-box{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*
+1-2-3. 设置标题
+【外框】
+- 颜色设置为白色
+- 字母转为大写
+ */
+.heading-primary{
+	color: white;
+	text-transform: uppercase;
+}
+
+/*
+1-2-3-1. 主要标题
+- 设为块元素
+- 字体大小为60px
+- 字体粗细为400
+- 字母间距为35px
+ */
+.heading-primary-main{
+	display: block;
+	font-size: 60px;
+	font-weight: 400;
+	letter-spacing: 35px;
+}
+
+/*
+1-2-3-2. 次要标题
+- 设为块元素
+- 字体大小为20px
+- 字体粗细为700
+- 字母间距为17.4px
+ */
+.heading-primary-sub{
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 17.4px;
+}
+
+/*
+1.
+遗忘/不会拼写/不会发音
+box-sizing
+linear-gradient
+clip-path
+polygon
+-
+text-transform
+*/
+
+
+
+
+
+

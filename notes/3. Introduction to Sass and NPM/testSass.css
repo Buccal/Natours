@@ -1,0 +1,64 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit; }
+
+.button .btn-main:link, .button .btn-hot:link {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  font-size: inherit;
+  border-radius: 1rem;
+  width: 1rem; }
+
+html {
+  box-sizing: border-box;
+  font-size: 625%; }
+
+body {
+  font-size: 0.16rem; }
+
+nav {
+  background-color: #BFDEEE;
+  padding: 0.1rem 0; }
+  nav::after {
+    content: "";
+    /*display: block;*/
+    display: table;
+    /*display: inline-block;*/
+    /*display: inline;*/
+    clear: both; }
+
+.navigation {
+  float: left;
+  list-style: none; }
+  .navigation li {
+    display: inline-block;
+    margin-left: 0.5rem; }
+    .navigation li a {
+      text-decoration: none;
+      color: #FFB27F;
+      text-transform: uppercase; }
+      .navigation li a:link {
+        color: #808080; }
+      .navigation li a:hover {
+        color: #000; }
+    .navigation li:first-child a:link {
+      color: #000; }
+
+.button {
+  float: right; }
+  .button .btn-main:link {
+    /*background-color: $color-primary-lighter;*/
+    background-color: #a1e196; }
+  .button .btn-main:hover {
+    background-color: #55c57a; }
+  .button .btn-hot:link {
+    background-color: #FFB27F; }
+  .button .btn-hot:hover {
+    /*background-color: $color-tertiary-darker;*/
+    background-color: #ff9226; }

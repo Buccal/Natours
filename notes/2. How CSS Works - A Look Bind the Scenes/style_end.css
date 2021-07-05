@@ -1,0 +1,360 @@
+/*
+【颜色参考 】
+浅绿：#7ed56fff
+中绿：#55c57aff
+深绿：#28b485ff
+*/
+
+/*
+1-1-1. perform a basic reset: Normalize that CSS in order to make a cross browser reset. So in order to make every browser render the page.(随着浏览器的发展已经不那么必要了)
+- 消除浏览器添加的外边距和内边距
+- 删去边框和内边距会自动添加到元素的总宽高的默认行为
+*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+/*
+2-1
+1. 将所有px转换为rem
+2. 将box-sizing属性改为继承
+*/
+html{
+	font-size: 62.5%;
+}
+
+/*
+1-1-2. set some overall font properties for the entire webpage
+- 设置字体为Lato，候补字体为sans-serif
+- 设置粗细为400
+- 设置大小为16px
+- 设置颜色为灰色
+- 设置行距为1.7（1.7倍预定义的行距）
+- 设置内边距为30px
+*/
+body{
+	/*Lato可以加上双引号*/
+	font-family: "Lato", "Futura Std Light", "Californian FB", "Broadway", "Bauhaus 93",sans-serif;
+	/*去掉px，不需要单位*/
+	font-weight: 400;
+	/*font-size: 16px;*/
+	/*等价于#777*/
+	color: gray;
+	line-height: 1.7;
+	padding: 3rem;
+	box-sizing: border-box;
+}
+
+/*
+1-1-3. formatting the header element
+- 设置高度为95vh（每个点这个元素的高度应为窗口高度的95%）
+- 设置背景图片为hero.jpg
+- 设置图片大小为cover（在不拉伸图像的情况下尽可能缩放图像。 如果图像的比例与元素不同，则会垂直或水平裁剪图像，以确保没有空白空间。）
+- 设置图片位置在顶部
+- 给图片添加半透明绿色渐变（浅绿→深绿）遮罩linear-gradient()，透明度为0.8，方向为右下角
+- 裁剪图片clip-path，裁剪边高度设为75vh，这样就可以随着视窗大小变化了（课堂测试：等腰三角形）
+ */
+.header{
+	height: 95vh;
+	background-image: linear-gradient(to right bottom, #7ED56FCC, #28b485CC), url(../img/hero.jpg);
+	background-size: cover;
+	background-position: top;
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	position: relative;
+}
+
+/*
+1-2-1. 设置图标位置
+- 设置图标为绝对定位（别忘了绝对定位的要求）
+- 设置上和左都为40px
+ */
+.header__logo-box{
+	position: absolute;
+	top: 4rem;
+	left: 4rem;
+}
+
+/*
+1-2-2. 设置图标
+- 设置高度为35px（设置高度后宽度会自适应）
+ */
+.header__logo{
+	height: 3.5rem;
+}
+
+/*
+1-2-4. 标题和按钮居中
+- 设置绝对定位
+- 使用top、left、transform设置居中（为了看起来更舒服top可以设为40%）
+ */
+.header__text-box{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+/*
+1-2-3. 设置标题
+【外框】
+- 颜色设置为白色
+- 字母转为大写
+- ~~~~~~~~~~~~
+2-3. 修复动画的摇晃
+ */
+.heading-primary{
+	color: white;
+	text-transform: uppercase;
+	backface-visibility: hidden;
+}
+
+/*
+1-2-3-1. 主要标题
+- 设为块元素
+- 字体大小为60px
+- 字体粗细为400
+- 字母间距为35px
+- ~~~~~~~~~~~~
+2-1-2. 设置动画
+- 动画名设为moveInLeft
+- 动画时间设为1s
+- 动画播放速率设为ease-out
+- [测试]动画延迟2s
+- [测试]动画重复播放3次
+ */
+.heading-primary--main{
+	display: block;
+	font-size: 6rem;
+	font-weight: 400;
+	letter-spacing: 3.5rem;
+	animation-name: moveInLeft;
+	/*不声明时间不起作用*/
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+/*
+	animation-delay: 2s;
+	animation-iteration-count: 3;
+	 */
+}
+
+/*
+1-2-3-2. 次要标题
+- 设为块元素
+- 字体大小为20px
+- 字体粗细为700
+- 字母间距为17.4px
+- ~~~~~~~~~~~~
+2-2-2. 设置动画
+- 动画名设为moveInLeft
+- 动画时间设为1s
+- 动画播放速率设为ease-out
+ */
+.heading-primary--sub{
+	display: block;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 1.74rem;
+	animation: moveInRight 1s ease-out;
+	margin-bottom: 6rem;
+}
+
+/*
+1. 总结
+遗忘/不会拼写/不会发音
+box-sizing
+linear-gradient
+clip-path
+polygon
+-
+text-transform
+*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*
+2-1-1. 添加从左边浮入动画
+- 移动最左边为100px
+- 移动最右边为10px
+ */
+@keyframes moveInLeft {
+	0%{
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	80%{
+		transform: translateX(10px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/*
+2-2-2. 添加从右边浮入动画
+- 移动最左边为100px
+- 移动最右边为10px
+ */
+@keyframes moveInRight {
+	0%{
+		opacity: 0;
+		transform: translateX(100px);
+	}
+	80%{
+		transform: translateX(-10px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+/*
+2. 总结
+搞错/遗忘/不会拼写/不会发音
+transform(✓) - transition(✗)
+指定动画后别忘了指定时间
+animation-duration(✓) - animation-time(✗)
+animation-timing-function
+	ease-in
+	ease-out
+animation-iteration-count
+backface-visibility
+ */
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+/*
+3-1-1. 设置通用按钮未访问和按钮已访问时的样式
+- 字母大写
+- 去掉下划线样式
+- 上下内边距为15px，左右外边距为40px
+- 设置圆角（直接设置一个非常大的值就行了）
+- 设为居中（设为行内块元素，父元素居中对齐 | 我想到的是块元素margin）
+- 设置与标题有60px间距（设置标题下边距 | 我想到的是设置按钮上边距）
+- 所有元素动画化，持续时间设为0.2s
+*/
+.btn:link, .btn:visited{
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1.5rem 4rem;
+	border-radius: 5rem;
+	display: inline-block;
+	transition: all .2s;
+	position: relative;
+}
+
+/*
+3-1-2. 设置白色按钮样式
+- 背景色为白色
+- 字体颜色为灰色
+*/
+.btn--white{
+	background-color: white;
+	color: gray;
+}
+
+/*
+3-1-3. 设置鼠标悬浮在按钮上的样式
+- 按钮上移3px
+- 在正下方添加厚度为10px、模糊程度为20px、透明度是20%的黑色阴影
+ */
+.btn:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 10px 20px #00000032;
+}
+
+/*
+3-1-4 设置按钮激活/按下时的样式
+- 按钮下移1px
+- 在正下方添加厚度为5px、模糊程度为10px、透明度是20%的黑色阴影
+ */
+.btn:active{
+	transform: translateY(-1px);
+	box-shadow: 0 5px 10px #00000032;
+}
+
+/*
+3-2-1 在按钮后方添加after伪元素
+- 设置content属性为空
+- 设置为行内块元素
+- 设置宽高为100%
+- 设置为圆角
+- 设置为绝对定位
+- 设置上左为0
+- 设置在按钮层下面
+- 所有元素动画化，持续时间设为0.4s
+ */
+.btn::after{
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 5rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: all .4s;
+}
+
+/*
+3-2-2. 设置白色按钮的after伪元素
+- 背景色为白色
+*/
+.btn--white::after{
+	background-color: white;
+}
+
+/*
+3-2-3. 设置鼠标悬浮在按钮上时的after伪元素（注意选择器的顺序）
+- 变形x方向为之前的1.4倍，y为1.6倍
+- 淡出为不可见
+ */
+.btn:hover::after{
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
+}
+
+/*
+3-3-1. 设置从下浮动到上的动画
+- 移动最下边为30px
+*/
+@keyframes moveInBottom{
+	0%{
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	200%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/*
+3-3-2. 给按钮添加动画
+- 持续时间0.5s，动画播放率为先快后慢，延迟0.75s
+*/
+.btn--animated{
+	animation: moveInBottom .5s ease-out .75s;
+	animation-fill-mode: backwards;
+}
+
+
+/*
+3. 总结
+搞错/遗忘/不会拼写/不会发音
+opacity
+transition - transform
+animation-fill-mode
+backwards
+容易弄混/不太熟悉/可能遗忘
+text-transform & text-decoration
+border-radius
+box-shadow
+*/
+
+

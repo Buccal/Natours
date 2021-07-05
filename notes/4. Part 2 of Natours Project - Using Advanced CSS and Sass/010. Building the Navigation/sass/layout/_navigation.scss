@@ -1,0 +1,156 @@
+.navigation {
+	&__checkbox {
+		display: none;
+	}
+
+	&__button {
+		height: 7rem;
+		width: 7rem;
+		border-radius: 50%;
+		position: fixed;
+		top: 6rem;
+		right: 6rem;
+		background-color: $color-white;
+		box-shadow: 0 1rem 3rem $shadow-light-1;
+		z-index: 2000;
+		transition: opacity .3s;
+		// 按钮里的三条线居中
+		text-align: center;
+		cursor: pointer;
+	}
+
+	&__icon {
+		// 父元素是元素本身
+		position: relative;
+		margin-top: 3.4rem;
+
+		&,
+		&::before,
+		&::after {
+			width: 3rem;
+			height: 2px;
+			background-color: $color-grey-dark-3;
+			display: inline-block;
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			transition: all 2s;
+		}
+
+		&::before {
+			top: -.8rem;
+		}
+
+		&::after {
+			top: .8rem;
+		}
+	}
+	// ::before和:before
+	&__button:hover > &__icon::before {
+		top: -1rem;
+	}
+
+	&__button:hover > &__icon::after {
+		top: 1rem;
+	}
+
+	&__checkbox:checked + &__button > &__icon{
+		background-color: transparent;
+	}
+
+	&__checkbox:checked + &__button > &__icon::before {
+		// 覆盖:hover指定的top;
+		top: 0;
+		transform: rotate(135deg);
+	}
+
+	&__checkbox:checked + &__button > &__icon::after {
+		top: 0;
+		transform: rotate(-135deg);
+	}
+
+	&__background {
+		height: 6rem;
+		width: 6rem;
+		border-radius: 50%;
+		position: fixed;
+		top: 6.5rem;
+		right: 6.5rem;
+		background-image: radial-gradient($color-primary-light, $color-primary-dark);
+		z-index: 1000;
+		// 点击关闭的动画
+		transition: transform .8s;
+	}
+
+	&__nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		background-image: linear-gradient(to right top, $color-primary, $color-primary-light);
+		z-index: 1500;
+		opacity: 0;
+		// 点击打开的动画，别忘了
+		transition: all .8s;
+	}
+
+	&__checkbox:checked ~ &__background {
+		transform: scale(80);
+	}
+
+	&__checkbox:checked ~ &__nav {
+		opacity: 1;
+		width: 100%;
+	}
+
+	&__checkbox:checked ~ &__nav &__link{
+		display: inline-block;
+	}
+
+	&__list {
+/*		margin: 0 auto;
+		text-align: center;*/
+		@include absCenter;
+		list-style: none;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__item {
+		margin: 1rem;
+	}
+
+	&__link {
+		&:link,
+		&:visited {
+			display:none;
+			text-decoration: none;
+			color: $color-white;
+			font-size: 3rem;
+			font-weight: 300;
+			text-transform: uppercase;
+			padding: 1rem 2rem;
+			/*background-image: linear-gradient(105deg, $color-white 0%, $color-white 0%, transparent 0%);*/
+			background-image: linear-gradient(105deg, transparent 0%, transparent 50%, $color-white 50%);
+			background-size: 210%;
+			transition: all .4s;
+
+			span {
+				display: inline-block;
+				margin-right: 1.5rem;
+			}
+		}
+
+		&:hover,
+		&:active {
+			color:  $color-primary;
+			background-position: 100%;
+			transform: translateX(1rem);
+		}
+	}
+}

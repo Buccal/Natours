@@ -1,0 +1,54 @@
+.row{
+	/*
+		当窗口变化时，宽度也随之变化
+		如果有足够空间，就按照指定的宽度设置
+		如果没有，则简单100%填充当前可用的空间
+	*/
+	max-width: $grid-width;
+	/*
+	指定左右边距auto，则浏览器会自动计算左右边距，即左右边距相等，元素就居中了
+	*/
+	margin: 0 auto;
+
+	@include flexfix;
+
+	&:not(:last-child) {
+		margin-bottom: $gutter-vertical;
+	}
+
+	[class^="col-"] {
+		/*display: inline-block;*/
+		float: left;
+		/*margin: 0 $gutter-horizontal;*/
+		/*width: calc(($grid-width - $gutter-horizontal * 4)/2;*/
+		/*width: calc((100% - #{$gutter-horizontal})/2;*/
+
+		&:not(:last-child) {
+			margin-right: $gutter-horizontal;
+		}
+	}
+
+	.col-1-u-2 {
+		width: calc((100% - #{$gutter-horizontal})/2);
+	}
+
+	.col-1-u-3 {
+		width: calc((100% - #{$gutter-horizontal} * 2)/3);
+	}
+
+	.col-2-u-3 {
+		width: calc(((100% - #{$gutter-horizontal} * 2)/3)*2 + #{$gutter-horizontal});
+	}
+
+	.col-1-u-4 {
+		width: calc((100% - #{$gutter-horizontal} * 3)/4);
+	}
+
+	.col-2-u-4 {
+		width: calc(((100% - #{$gutter-horizontal} * 3)/4) * 2 + #{$gutter-horizontal});
+	}
+
+	.col-3-u-4 {
+		width: calc(((100% - #{$gutter-horizontal} * 3)/4) * 3 + #{$gutter-horizontal} * 2);
+	}
+}

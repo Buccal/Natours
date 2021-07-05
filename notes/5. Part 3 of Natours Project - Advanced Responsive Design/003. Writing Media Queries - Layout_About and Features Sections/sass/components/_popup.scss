@@ -1,0 +1,142 @@
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: $shadow-dark;
+	z-index: 2500;
+	// 不方便动画p
+	/*display: none;*/
+	// 文本内容仍存在，只是不可见
+	opacity: 0;
+	// 隐藏文本内容
+	visibility: hidden;
+	transition: all .3s;
+
+	&:target {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&__content {
+		@include absCenter;
+		display: table;
+		background-color: $color-white;
+		width: 75%;
+		box-shadow: 1rem 2rem 4rem $shadow-light-3;
+		border-radius: .3rem;
+		// 图片会覆盖圆角
+		overflow: hidden;
+		// 放大推到屏幕前效果
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.25);
+		// 延迟.2s让黑色背景先载入
+		transition: all .4s .2s;
+
+		@include respond(tab-land) {
+			width: 95%;
+		}
+
+		@include respond(tab-port) {
+			width: 100%;
+		}
+	}
+
+	&:target>&__content {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	&__close {
+		&:link,
+		&:visited {
+			position: absolute;
+			top: 2.5rem;
+			right: 2.5rem;
+			font-size: 3rem;
+			color: $color-grey-dark-1;
+			text-decoration: none;
+			display: inline-block;
+			// 默认body1.7
+			line-height: 1;
+			transition: all .2s;
+		}
+
+		&:hover {
+			color: $color-primary
+		}
+
+	}
+
+	&__left {
+		display: table-cell;
+		width: 33.3333333%;
+
+		@include respond(phone) {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+
+		@include respond(phone) {
+			display: inline-block;
+			width: 49.7%;
+		}
+	}
+
+	&__right {
+		display: table-cell;
+		width: 66.6666667%;
+		// 默认为baseline，会显示在图片下面
+		vertical-align: middle;
+		padding: 3rem 5rem;
+
+		@include respond(tab-port) {
+			padding: 1rem;
+		}
+
+		@include respond(phone) {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	&__text {
+		font-size: 1.4rem;
+		margin-bottom: 4rem;
+
+		-moz-column-count: 2;
+		-moz-column-gap: 4rem;
+		-moz-column-rule: 1px solid $color-grey-light-2;
+
+		column-count: 2;
+		// 默认1em
+		column-gap: 4rem; // 1em = 14px，当前元素的字体大小
+		column-rule: 1px solid $color-grey-light-2;
+
+		-moz-hyphens: auto;// Mozilla
+		-ms-hyphens: auto;// Microsoft Edge
+		-webkit-hyphens: auto; //Chrome和Safari
+
+		hyphens: auto; //连字符后换行
+
+		@include respond(tab-port) {
+			margin-bottom: 2rem;
+		}
+
+		@include respond(phone) {
+			-moz-column-count: 1;
+			-moz-column-gap: 1rem;
+			-moz-column-rule: none;
+
+			column-count: 1;
+			column-gap: 1rem;
+			column-rule: none;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "name": "testsass",
+  "version": "1.0.0",
+  "description": "test sass",
+  "main": "testSass.js",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.14.0"
+  },
+  "scripts": {
+    "compile:sass": "node-sass testSass.scss testSass.css -w",
+    "compile:sass1": "node-sass style_end.scss style_end.css -w"
+  },
+  "author": "",
+  "license": "ISC"
+}
